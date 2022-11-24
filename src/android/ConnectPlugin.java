@@ -340,6 +340,10 @@ public class ConnectPlugin extends CordovaPlugin {
             executeSetUserData(args, callbackContext);
             return true;
 
+        } else if (action.equals("setUserId")) {
+            executeSetUserId(args, callbackContext);
+            return true;
+
         } else if (action.equals("clearUserData")) {
             executeClearUserData(args, callbackContext);
             return true;
@@ -693,6 +697,17 @@ public class ConnectPlugin extends CordovaPlugin {
 
         logger.setUserData(params.get("em"), params.get("fn"), params.get("ln"), params.get("ph"), params.get("db"), params.get("ge"), params.get("ct"), params.get("st"), params.get("zp"), params.get("cn"));
         callbackContext.success();
+    }
+
+    private void executeSetUserId(JSONArray args, CallbackContext callbackContext) throws JSONException {
+        if (args.length() == 0) {
+            // Not enough parameters
+            callbackContext.error("Invalid arguments");
+            return;
+        }
+
+        String userId = args.getString(0);
+        logger.setUserID(userId);
     }
 
     private void executeClearUserData(JSONArray args, CallbackContext callbackContext) {

@@ -85,6 +85,10 @@ exports.setUserData = function (userData, s, f) {
   exec(s, f, 'FacebookConnectPlugin', 'setUserData', [userData])
 }
 
+exports.setUserId = function (userId, s, f) {
+  exec(s, f, 'FacebookConnectPlugin', 'setUserId', [userId])
+}
+
 exports.clearUserData = function (s, f) {
   exec(s, f, 'FacebookConnectPlugin', 'clearUserData', [])
 }
